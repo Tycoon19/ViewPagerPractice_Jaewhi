@@ -11,15 +11,13 @@ import com.example.viewpagerpractice_jaewhi.fragments.NameFragment
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 //  CharSequence는 String으로 이해하기.
     override fun getPageTitle(position: Int): CharSequence? {
-        if (position == 0){
-            return "이름"
+//      position의 상황을 봐가면서 return 해줄께~
+        return when (position){
+            0 -> "이름"
+            1 -> "내 정보"
+            else -> "인사"
         }
-        else if(position == 1){
-            return "내 정보"
-        }
-        else{
-            return "인사말"
-        }
+
     }
 
 //  뷰페이저에 몇장을 보여줄거니~?
@@ -29,14 +27,10 @@ class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
 //  position(위치)에 따라 무슨 Fragment를 보여줄거니~?
     override fun getItem(position: Int): Fragment {
 //      각각의 Fragment를 기본생성자를 이용해 객체화해서 반환해준다.
-        if (position == 0){
-            return NameFragment()
-        }
-        else if (position == 1){
-            return MyinfoFragment()
-        }
-        else{
-            return GreetingsFragment()
+        return when(position){
+            0 -> NameFragment()
+            1 -> MyinfoFragment()
+            else -> GreetingsFragment()
         }
 
     }
