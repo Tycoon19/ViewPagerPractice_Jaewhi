@@ -9,6 +9,19 @@ import com.example.viewpagerpractice_jaewhi.fragments.NameFragment
 
 // FragmentPagerAdapter는 기본 생성자를 지원하지 않기 때문에 주 생성자를 커스터마이징한다.
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
+//  CharSequence는 String으로 이해하기.
+    override fun getPageTitle(position: Int): CharSequence? {
+        if (position == 0){
+            return "이름"
+        }
+        else if(position == 1){
+            return "내 정보"
+        }
+        else{
+            return "인사말"
+        }
+    }
+
 //  뷰페이저에 몇장을 보여줄거니~?
     override fun getCount(): Int {
         return 3
